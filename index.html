@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Übermensch: find what moves your sleep, mood and money</title>
+<meta name="description" content="A private record for iPhone. Log your day in plain words; Übermensch compares sleep, food, mood, body and spending on the device and shows the days behind every link. No account, no ads.">
+<link rel="canonical" href="https://yobius.github.io/ubermensch-site/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Übermensch: find what moves your sleep, mood and money">
+<meta property="og:description" content="A private record for iPhone that shows the days behind every link it finds. No account, no ads. On the App Store in December.">
+<meta property="og:url" content="https://yobius.github.io/ubermensch-site/">
+<meta property="og:image" content="https://yobius.github.io/ubermensch-site/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yobius.github.io/ubermensch-site/img/og-cover.png">
+<meta name="theme-color" content="#07080A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Übermensch","operatingSystem":"iOS","applicationCategory":"HealthApplication",
+ "description":"A private record for iPhone that compares sleep, food, mood, body and spending on the device and shows the days behind every link.",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Aleksandr Konorev"},
+ "image":"https://yobius.github.io/ubermensch-site/img/og-cover.png","url":"https://yobius.github.io/ubermensch-site/"}
+</script>
+<style>
+:root{--bg:#07080A;--panel:#111317;--line:rgba(236,231,217,.14);--ink:#ECE7D9;--dim:rgba(236,231,217,.68);--gold:#FEAC00;--radius:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img,video{display:block;max-width:100%;height:auto}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:700;line-height:1.12;letter-spacing:-.01em}
+h1{font-size:clamp(40px,6vw,72px)}
+h2{font-size:clamp(30px,4vw,46px);margin:10px 0 18px}
+h3{font-size:24px;margin-bottom:8px}
+em{font-style:italic;color:var(--gold)}
+p.lead{font-size:clamp(18px,2vw,21px);color:var(--dim);max-width:34em}
+header{position:sticky;top:0;z-index:10;background:rgba(7,8,10,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Playfair Display",serif;font-weight:700;font-size:21px}
+.brand img{width:32px;height:32px;border-radius:8px}
+nav{display:flex;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:var(--dim)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;background:var(--gold);color:#0A0A0B;font-weight:800;text-decoration:none;font-size:16px;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hero{padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 14px}
+.hero small{color:var(--dim);font-size:14px}
+.phone{border-radius:34px;border:1px solid var(--line);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);background:#141414}
+.hero .phone{max-width:340px;justify-self:center}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}
+.strip .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px}
+section{padding:84px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card p{color:var(--dim)}
+.card .num{font-family:"Playfair Display",serif;font-style:italic;color:var(--gold);font-size:30px;margin-bottom:6px}
+.demo{display:inline-block;margin-top:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--dim);border:1px solid var(--line);padding:2px 8px;border-radius:4px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;align-items:start}
+.pair .phone{max-width:330px;justify-self:center}
+.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.videos figure{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.videos video{width:100%;aspect-ratio:9/16;background:#000;object-fit:cover}
+.videos figcaption{padding:14px 18px;color:var(--dim);font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.grid .card h3{font-size:21px}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.shots figure{text-align:center}
+.shots figcaption{margin-top:12px;color:var(--dim);font-size:15px}
+.shots .phone{max-width:300px;margin:0 auto}
+.privacy .wrap{display:grid;grid-template-columns:1fr .8fr;gap:48px;align-items:center}
+ul.ticks{list-style:none;margin-top:22px;display:grid;gap:12px}
+ul.ticks li{padding-left:28px;position:relative;color:var(--dim)}
+ul.ticks li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:12px;border-radius:3px;background:var(--gold)}
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.price{font-family:"Playfair Display",serif;font-size:34px;color:var(--gold);margin:6px 0}
+.final{text-align:center;padding:96px 0}
+.final .ctas{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--dim)}
+.steps .card,.grid .card{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:22px 0 0}
+.grid{grid-template-columns:1fr 1fr;column-gap:56px;row-gap:34px}
+a:focus-visible,.btn:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.brand{min-height:44px}
+footer a,.privacy p a{display:inline-block;padding:12px 4px;margin:-12px -4px}
+@media (max-width:900px){
+ nav{display:none}
+ .hero .wrap,.privacy .wrap,.pair{grid-template-columns:1fr}
+ .steps,.videos,.grid,.shots,.pricing{grid-template-columns:1fr}
+ .hero{padding-top:44px}
+ section{padding:64px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/icon-512.png" alt="" width="32" height="32">Übermensch</a>
+    <nav aria-label="Sections"><a href="#how">How it works</a><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#pricing">Pricing</a></nav>
+    <a class="btn" href="https://testflight.apple.com/join/9QZJaVgk">Join the beta</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="mono">A private record for iPhone</p>
+      <h1>Find what actually moves your <em>sleep, mood and money.</em></h1>
+      <p class="lead" style="margin-top:22px">Log your day in plain words. Übermensch compares sleep, food, mood, body and spending on your iPhone and shows the days behind every link it finds.</p>
+      <div class="ctas">
+        <a class="btn" href="https://testflight.apple.com/join/9QZJaVgk">Try the TestFlight beta</a>
+        <a class="btn ghost" href="#videos">Watch 30 seconds</a>
+      </div>
+      <small>On the App Store in December. No account, no ads.</small>
+    </div>
+    <div class="phone"><img src="img/pulse.jpg" width="630" height="1368" alt="The Pulse screen: a link found in the records, with a chart and a question to rule out another cause"></div>
+  </div>
+</section>
+
+<div class="strip"><div class="wrap">
+  <span class="mono">No account</span><span class="mono">No server of our own</span><span class="mono">No ads</span><span class="mono">App Store label: Data Not Collected</span>
+</div></div>
+
+<section id="how">
+  <div class="wrap">
+    <p class="mono">How it works</p>
+    <h2>Your records, compared. <em>With receipts.</em></h2>
+    <div class="steps">
+      <div class="card"><div class="num">1</div><h3>Log the way you talk</h3><p>One sentence can become several records: hours of sleep, a mood, an expense. Nothing is saved until you confirm. Apple Health can fill in the rest.</p></div>
+      <div class="card"><div class="num">2</div><h3>It finds links, with the days behind them</h3><p>On the lowest-mood days, daily spending ran $113 higher: 17 such days against 64 others. Every link comes in your own units, as a hypothesis, not a verdict.</p><span class="demo">DEMO DATA</span></div>
+      <div class="card"><div class="num">3</div><h3>It checks itself</h3><p>It asks one question to rule out another cause, keeps every claim on the record and counts how often its predictions came true. Any link can become a 20-day check: ten days with, ten without, drawn at random.</p></div>
+    </div>
+    <div class="pair">
+      <figure class="phone"><img src="img/claims.jpg" width="630" height="1368" loading="lazy" alt="Claims on the record: a link confirmed on 26 new days, called 8 of 10 against about 28% by chance"></figure>
+      <div class="card" style="align-self:center">
+        <p class="mono">Claims on the record</p>
+        <h3 style="margin-top:10px">Called 8 of 10. Chance alone: about 28%.</h3>
+        <p>Before it has enough days, it says nothing at all. After that, every claim stays on the record with its sample size and standing, and you can replay the search that found it.</p>
+        <span class="demo">DEMO DATA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="videos" style="background:linear-gradient(180deg,transparent,rgba(254,172,0,.04),transparent)">
+  <div class="wrap">
+    <p class="mono">In 30 seconds</p>
+    <h2>Three ways to <em>meet it</em></h2>
+    <div class="videos">
+      <figure><video controls playsinline preload="none" poster="video/ad02-poster.jpg"><source src="video/ad02.mp4" type="video/mp4"></video><figcaption>Day 3 of the apocalypse. One app still answers.</figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="video/ad05-poster.jpg"><source src="video/ad05.mp4" type="video/mp4"></video><figcaption>14 tracking apps. 14 logins. Delete 13.</figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="video/ad21-poster.jpg"><source src="video/ad21.mp4" type="video/mp4"></video><figcaption>If the app is free, you're the product.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <p class="mono">What's inside</p>
+    <h2>One record for the <em>whole day</em></h2>
+    <div class="grid">
+      <div class="card"><h3>Body map</h3><p>Tap where it feels off: sharp, dull, strong. Add blood pressure, resting pulse or HRV right there.</p></div>
+      <div class="card"><h3>Food, offline</h3><p>7,973 foods and 2.8 million barcodes in a database on the phone. Or describe the meal in words and get an estimate.</p></div>
+      <div class="card"><h3>Money, typed by hand</h3><p>No bank login. Subscriptions and rent wait for your confirmation before they count.</p></div>
+      <div class="card"><h3>A journal that notices</h3><p>The app reads your journal on the phone and offers turns of thought from your own entries as hypotheses.</p></div>
+      <div class="card"><h3>Practices without points</h3><p>54 practices with instructions. A skill moves through six positions, from unseen to passing on. No XP, no badges.</p></div>
+      <div class="card"><h3>Labs and the doctor</h3><p>Lab results against their ranges, and questions to bring to your doctor. No diagnosis, no advice.</p></div>
+      <div class="card"><h3>Life in chapters</h3><p>Moves, jobs, relationships, losses: the weeks after are read against the weeks before, and a change is named only when it beats chance.</p></div>
+      <div class="card"><h3>A library for bad days</h3><p>23 public-domain manuals, from field medicine to bread and soap, answered by the AI on the phone. After a one-time model download, it works in airplane mode too.</p></div>
+      <div class="card"><h3>Ask your own records</h3><p>Bibliotheca, the in-app AI, runs on Apple Intelligence on the device. It does not flatter or invent.</p></div>
+    </div>
+    <div class="shots">
+      <figure><div class="phone"><img src="img/body.jpg" width="630" height="1368" loading="lazy" alt="Body map: choosing a sensation in the chest"></div><figcaption>Body map</figcaption></figure>
+      <figure><div class="phone"><img src="img/mastery.jpg" width="630" height="1368" loading="lazy" alt="A practice with six positions of mastery and signs you are there"></div><figcaption>Six positions, no points</figcaption></figure>
+      <figure><div class="phone"><img src="img/library.jpg" width="630" height="1368" loading="lazy" alt="Library with practices such as a pedal generator and charging a phone off-grid"></div><figcaption>The library, offline</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" class="privacy">
+  <div class="wrap">
+    <div>
+      <p class="mono">Privacy</p>
+      <h2>Local-first <em>by design</em></h2>
+      <p class="lead">Your records are stored on your iPhone. There is no account, no server sync and no analytics.</p>
+      <ul class="ticks">
+        <li>The AI runs on the device by default. Private Cloud Compute stays off until you turn it on.</li>
+        <li>Lock the app with Face ID, Touch ID or your passcode.</li>
+        <li>Export to Markdown, JSON or a full copy whenever you like.</li>
+        <li>Delete all data from Privacy &amp; Data whenever you are done.</li>
+      </ul>
+      <p style="margin-top:22px"><a href="https://yobius.github.io/ubermensch-privacy/">Read the privacy policy</a></p>
+    </div>
+    <div class="phone" style="max-width:330px;justify-self:center"><img src="img/privacy.jpg" width="630" height="1368" loading="lazy" alt="Privacy and Data screen: local-first by design"></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <p class="mono">Pricing</p>
+    <h2>It costs money. <em>On purpose.</em></h2>
+    <div class="pricing">
+      <div class="card"><h3>Free</h3><div class="price">$0</div><p>Logging, the timeline, Apple Health, practices and the library, the AI dialogue, data export, and the first hypothesis with its evidence.</p></div>
+      <div class="card"><h3>Pro</h3><div class="price">$9.99<span style="font-size:18px;color:var(--dim)"> / month</span></div><p>Or $49.99 a year with two weeks free, or $99.99 once. Adds every hypothesis on the record, the evidence behind each, weekly and monthly reviews, 20-day checks and printable sheets.</p></div>
+    </div>
+    <p style="margin-top:16px;color:var(--dim);font-size:14px">Prices in US dollars; the App Store shows the price for your country.</p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>On the App Store <em>in December.</em></h2>
+    <p class="lead" style="margin:0 auto">Until then, the beta is open on TestFlight.</p>
+    <div class="ctas"><a class="btn" href="https://testflight.apple.com/join/9QZJaVgk">Join the beta</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Aleksandr Konorev. Made by an independent developer.</span>
+    <span><a href="https://yobius.github.io/ubermensch-privacy/">Privacy policy</a> · <a href="https://yobius.github.io/ubermensch-privacy/support.html">Support</a></span>
+  </div>
+</footer>
+</body>
+</html>
