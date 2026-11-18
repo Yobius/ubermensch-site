@@ -86,6 +86,18 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.62em;width:12px;hei
 .price{font-family:"Playfair Display",serif;font-size:34px;color:var(--gold);margin:6px 0}
 .final{text-align:center;padding:96px 0}
 .final .ctas{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
+.notify{max-width:520px;scroll-margin-top:110px;margin:44px auto 0;padding-top:30px;border-top:1px solid var(--line)}
+.notify label{display:block;font-family:"Playfair Display",serif;font-size:22px;margin-bottom:14px}
+.notify .field{display:flex;gap:10px}
+.notify input{flex:1;min-width:0;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;font-size:16px}
+.notify input::placeholder{color:rgba(236,231,217,.5)}
+.notify input:focus-visible,.notify button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.notify button{border:0;cursor:pointer;font-family:inherit}
+.notify button:disabled{opacity:.6;cursor:default;transform:none}
+.notify .note{margin-top:14px;color:var(--dim);font-size:14px}
+.notify .note a{color:var(--ink)}
+.notify.done .field{display:none}
+.notify.done .note{color:var(--ink);font-size:17px}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 footer a{color:var(--dim)}
@@ -95,6 +107,7 @@ a:focus-visible,.btn:focus-visible,video:focus-visible{outline:2px solid var(--g
 .brand{min-height:44px}
 footer a,.privacy p a{display:inline-block;padding:12px 4px;margin:-12px -4px}
 @media (max-width:900px){
+ .notify .field{flex-direction:column}
  nav{display:none}
  .hero .wrap,.privacy .wrap,.pair{grid-template-columns:1fr}
  .steps,.videos,.grid,.shots,.pricing{grid-template-columns:1fr}
@@ -124,7 +137,7 @@ footer a,.privacy p a{display:inline-block;padding:12px 4px;margin:-12px -4px}
         <a class="btn" href="https://testflight.apple.com/join/9QZJaVgk">Try the TestFlight beta</a>
         <a class="btn ghost" href="#videos">Watch 30 seconds</a>
       </div>
-      <small>On the App Store in December. No account, no ads.</small>
+      <small>On the App Store in December. No account, no ads. <a href="#notify">Get an email when it's out.</a></small>
     </div>
     <div class="phone"><img src="img/pulse.jpg" width="630" height="1368" alt="The Pulse screen: a link found in the records, with a chart and a question to rule out another cause"></div>
   </div>
@@ -216,7 +229,7 @@ footer a,.privacy p a{display:inline-block;padding:12px 4px;margin:-12px -4px}
       <div class="card"><h3>Free</h3><div class="price">$0</div><p>Logging, the timeline, Apple Health, practices and the library, the AI dialogue, data export, and the first hypothesis with its evidence.</p></div>
       <div class="card"><h3>Pro</h3><div class="price">$9.99<span style="font-size:18px;color:var(--dim)"> / month</span></div><p>Or $49.99 a year with two weeks free, or $99.99 once. Adds every hypothesis on the record, the evidence behind each, weekly and monthly reviews, 20-day checks and printable sheets.</p></div>
     </div>
-    <p style="margin-top:16px;color:var(--dim);font-size:14px">Prices in US dollars; the App Store shows the price for your country.</p>
+    <p style="margin-top:16px;color:var(--dim);font-size:14px">Prices in US dollars. The App Store shows your country's price, with local taxes included where they apply.</p>
   </div>
 </section>
 
@@ -225,6 +238,14 @@ footer a,.privacy p a{display:inline-block;padding:12px 4px;margin:-12px -4px}
     <h2>On the App Store <em>in December.</em></h2>
     <p class="lead" style="margin:0 auto">Until then, the beta is open on TestFlight.</p>
     <div class="ctas"><a class="btn" href="https://testflight.apple.com/join/9QZJaVgk">Join the beta</a></div>
+    <form class="notify" id="notify" action="https://docs.google.com/forms/d/e/1FAIpQLSfskz0cNseb09w2aTS5VYMbiJXrvbl3Baix4ld6V-7LPCyocA/formResponse" method="POST">
+      <label for="notify-email">Get an email when it's out</label>
+      <div class="field">
+        <input id="notify-email" name="entry.1027140175" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="notify-note">
+        <button class="btn" type="submit">Notify me</button>
+      </div>
+      <p class="note" id="notify-note" role="status">One email at launch, then only rare news. Never shared. Saved in a Google Form; to be removed, write via <a href="https://yobius.github.io/ubermensch-privacy/support.html">Support</a>.</p>
+    </form>
   </div>
 </section>
 </main>
@@ -235,5 +256,20 @@ footer a,.privacy p a{display:inline-block;padding:12px 4px;margin:-12px -4px}
     <span><a href="https://yobius.github.io/ubermensch-privacy/">Privacy policy</a> · <a href="https://yobius.github.io/ubermensch-privacy/support.html">Support</a></span>
   </div>
 </footer>
+<script>
+document.getElementById('notify').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.currentTarget, b = f.querySelector('button'), note = document.getElementById('notify-note');
+  b.disabled = true; b.textContent = 'Sending…';
+  try {
+    await fetch(f.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(f)) });
+    f.classList.add('done');
+    note.textContent = "You're on the list. One email when Übermensch is on the App Store.";
+  } catch {
+    b.disabled = false; b.textContent = 'Notify me';
+    note.textContent = "That didn't go through. Check your connection and try again.";
+  }
+});
+</script>
 </body>
 </html>
